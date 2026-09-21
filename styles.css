@@ -9,7 +9,7 @@
   --mono: "DM Mono", monospace;
   --sans: "Manrope", sans-serif;
   --cursive: "Caveat", cursive;
-  --gradient-text: linear-gradient(110deg, #6e4fe4 0%, #d4578f 48%, #d98f4d 100%);
+  --gradient-text: linear-gradient(110deg, #f4cbe6 0%, #cfefad 48%, #f1f89e 100%);
 }
 
 * { box-sizing: border-box; }
