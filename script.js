@@ -35,6 +35,6 @@ document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe
 
 contactForm?.addEventListener("submit", (event) => {
   event.preventDefault();
-  formStatus.textContent = "Thanks! I'll be in touch soon.";
+  formStatus.textContent = "Thank you! I'll be in touch soon.";
   contactForm.reset();
 });
