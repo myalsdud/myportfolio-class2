@@ -18,3 +18,4 @@ This project is a personal portfolio website.
 **Status:** Released
 ## Author
 Created for Software Engineering practice.
+This is the main version.
