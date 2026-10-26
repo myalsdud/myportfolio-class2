@@ -15,7 +15,6 @@ This project is a personal portfolio website.
 3. Open `index.html` in a browser.
 ## Project Status
 **Version:** 1.0
-**Status:** Released
-## Author
-Created for Software Engineering practice.
-This is the main version.
+# My Portfolio
+
+This is the main and testing branch.
