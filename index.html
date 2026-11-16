@@ -193,15 +193,15 @@
             <h2 id="contact-title">Let's make<br /><em>something great.</em></h2>
             <a class="email-link" href="mailto:hello@alexmorgan.design">hello@alexmorgan.design <span>↗</span></a>
           </div>
-          <form id="contact-form" class="contact-form">
+          <form id="contact-form" class="contact-form" novalidate>
             <label for="name">Your name</label>
             <input id="name" name="name" type="text" placeholder="Jane Smith" required />
             <label for="email">Email address</label>
             <input id="email" name="email" type="email" placeholder="jane@company.com" required />
             <label for="message">Tell me a little about it</label>
             <textarea id="message" name="message" rows="3" placeholder="I'd love to talk about..." required></textarea>
-            <button class="button button-light" type="submit">Send inquiry <span>↗</span></button>
-            <p id="form-status" class="form-status" role="status"></p>
+            <button class="button button-light" type="submit">Submit <span>↗</span></button>
+            <p id="form-status" class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
           </form>
         </section>
       </main>

@@ -116,6 +116,49 @@ projectModal.addEventListener("close", () => {
 
 contactForm?.addEventListener("submit", (event) => {
   event.preventDefault();
-  formStatus.textContent = "Thank you! I'll be in touch soon.";
-  contactForm.reset();
+
+  const fields = [...contactForm.querySelectorAll("input[required], textarea[required]")];
+  const invalidFields = fields.filter((field) => {
+    const isEmpty = !field.value.trim();
+    const hasInvalidEmail = field.type === "email" && !field.checkValidity();
+    field.setAttribute("aria-invalid", String(isEmpty || hasInvalidEmail));
+    return isEmpty || hasInvalidEmail;
+  });
+
+  if (invalidFields.length > 0) {
+    const missingLabels = invalidFields
+      .filter((field) => !field.value.trim())
+      .map((field) => {
+        const fieldLabels = { name: "이름", email: "이메일", message: "메시지" };
+        return fieldLabels[field.name];
+      });
+    const hasInvalidEmail = invalidFields.some(
+      (field) => field.type === "email" && field.value.trim()
+    );
+    const messages = [];
+
+    if (missingLabels.length > 0) {
+      messages.push(`${missingLabels.join(", ")} 항목을 입력해 주세요.`);
+    }
+    if (hasInvalidEmail) {
+      messages.push("올바른 이메일 주소를 입력해 주세요.");
+    }
+
+    formStatus.textContent = messages.join(" ");
+    formStatus.classList.add("is-error");
+    invalidFields[0].focus();
+    return;
+  }
+
+  formStatus.classList.remove("is-error");
+  formStatus.textContent =
+    "입력이 확인되었습니다. 이 양식은 실제 이메일을 전송하지 않습니다.";
+});
+
+contactForm?.addEventListener("input", () => {
+  formStatus.textContent = "";
+  formStatus.classList.remove("is-error");
+  contactForm.querySelectorAll('[aria-invalid="true"]').forEach((field) => {
+    field.removeAttribute("aria-invalid");
+  });
 });
