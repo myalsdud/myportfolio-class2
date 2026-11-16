@@ -1,5 +1,6 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector("#site-nav");
+const themeToggle = document.querySelector("#theme-toggle");
 const navLinks = document.querySelectorAll(".site-nav a");
 const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
@@ -40,6 +41,27 @@ const projectDetails = {
 let lastFocusedCard = null;
 
 if (year) year.textContent = new Date().getFullYear();
+
+function setTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.dataset.theme = isDark ? "dark" : "light";
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light mode" : "Switch to dark mode"
+  );
+  themeToggle.querySelector(".theme-toggle-label").textContent = isDark
+    ? "Light mode"
+    : "Dark mode";
+  themeToggle.querySelector('[aria-hidden="true"]').textContent = isDark ? "☀" : "☾";
+}
+
+setTheme(localStorage.getItem("portfolio-theme") === "dark" ? "dark" : "light");
+themeToggle.addEventListener("click", () => {
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  setTheme(theme);
+  localStorage.setItem("portfolio-theme", theme);
+});
 
 menuToggle?.addEventListener("click", () => {
   const isOpen = siteNav.classList.toggle("is-open");
